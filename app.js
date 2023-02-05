@@ -3,10 +3,23 @@ import express from "express"
 const app = express()
 const port = 3000
 
+// html dosyalarının içine js yazabilmek için template engine ler ile "ejs tercih ettih" yapıcaz
+//ejs template  engine
+app.set("view engine", "ejs")
+
+//static files middleware
+app.use(express.static('public'))
+
+
 app.get('/', (req, res) => {
-    res.send("Hello");
+    res.render('index');
+});
+
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
 app.listen(port, () => {
     console.log(`Application listen on port: ${port}`);
 });
+
