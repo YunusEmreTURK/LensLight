@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import conn from './db.js'
 import mongoose from "mongoose"
 import pageRoute from "./routes/pageRoute.js" // * as kullanmadım çünkü tek ögeyi default olarak export ettik
-
+import photoRoute from "./routes/photoRoute.js"
 
 dotenv.config();
 
@@ -23,15 +23,8 @@ app.use(express.static('public'))
 
 // routes
 app.use('/', pageRoute)
+app.use('/photos', photoRoute)
 
-
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
-app.get('/about', (req, res) => {
-    res.render('about');
-});
 
 app.listen(port, () => {
     console.log(`Application listen on port: ${port}`);
