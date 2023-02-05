@@ -1,7 +1,16 @@
 import express from "express"
+import dotenv from "dotenv"
+import conn from './db.js'
+import mongoose from "mongoose"
+
+dotenv.config();
+
+//connection to the db
+mongoose.set('strictQuery',false);
+conn();
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 // html dosyalarının içine js yazabilmek için template engine ler ile "ejs tercih ettih" yapıcaz
 //ejs template  engine
