@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import conn from './db.js'
 import mongoose from "mongoose"
+import pageRoute from "./routes/pageRoute.js" // * as kullanmadım çünkü tek ögeyi default olarak export ettik
+
 
 dotenv.config();
 
@@ -18,6 +20,9 @@ app.set("view engine", "ejs")
 
 //static files middleware
 app.use(express.static('public'))
+
+// routes
+app.use('/', pageRoute)
 
 
 app.get('/', (req, res) => {
